@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import SlideList from '../views/SlideList.vue'
 import SlideEdit from '../views/SlideEdit.vue'
+import ItemList from '../views/ItemsList.vue'
+import ItemEdit from '../views/ItemsEdit.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,6 +25,20 @@ const routes = [
       {
         path: '/slide/edit/:id',
         component: SlideEdit,
+        props: true
+      },
+      {
+        path: '/item/list',
+        name: 'ItemList',
+        component: ItemList
+      },
+      {
+        path: '/item/edit',
+        component: ItemEdit
+      },
+      {
+        path: '/item/edit/:id',
+        component: ItemEdit,
         props: true
       },
     ]

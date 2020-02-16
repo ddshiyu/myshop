@@ -11,7 +11,12 @@
             <el-menu-item index="/slide/list">幻灯片列表</el-menu-item>
             <el-menu-item index="/slide/edit">新建幻灯片</el-menu-item>
           </el-menu-item-group>
-        </el-submenu>   
+          <el-menu-item-group>
+            <template slot="title">商品</template>
+            <el-menu-item index="/item/list">商品列表</el-menu-item>
+            <el-menu-item index="/item/edit">新建商品</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>       
       </el-menu>
     </el-aside>
     <el-container>
@@ -27,7 +32,7 @@
         <span>王小虎</span>
       </el-header>
       <el-main>
-        <router-view></router-view>
+        <router-view :key='$route.path'></router-view>
       </el-main>
     </el-container>
   </el-container>

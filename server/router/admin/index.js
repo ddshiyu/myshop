@@ -2,13 +2,14 @@ module.exports = app => {
   const express = require('express')
   const router = express.Router()
   const slide = require('../../models/slide')
+  const item = require('../../models/item')
   const path = require('path')
   router.get('/slidelist', async (req, res) => {
     const data = await slide.find()
     res.send(data)
   })
   router.post('/slideedit', async (req, res) => {
-    const data = await slide.create(req.body);
+    const data = await slide.create(req.body)
     res.send(data)
   })
   router.get('/slide/:id', async (req, res) => {
@@ -24,6 +25,23 @@ module.exports = app => {
     res.send({
       success: 0
     })
+  })
+  
+  router.get('/itemlist', async (req, res) => {
+    const data = await item.find()
+    res.send(data)
+  })
+  router.post('/itemedit', async (req, res) => {
+    const data = await item.create(req.body)
+    res.send(data)
+  })
+  router.get('/item/:id', async (req, res) => {
+    const data = await item.findById(req.params.id)
+    res.send(data)
+  })
+  router.put('/itemedit/:id', async (req, res) => {
+    const data = await item.findByIdAndUpdate(req.params.id, req.body, { useFindAndModify: false })
+    res.send(data)
   })
 
   app.use('/admin/api', router)
