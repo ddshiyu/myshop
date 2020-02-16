@@ -12,14 +12,18 @@ const routes = [
     component: Home,
     children: [
       {
-        path: '/SlideList',
+        path: '/slide/list',
         name: 'SlideList',
         component: SlideList
       },
       {
-        path: '/SlideEdit',
-        name: 'SlideEdit',
+        path: '/slide/edit',
         component: SlideEdit
+      },
+      {
+        path: '/slide/edit/:id',
+        component: SlideEdit,
+        props: true
       },
     ]
   },

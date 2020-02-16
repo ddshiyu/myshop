@@ -8,8 +8,8 @@
           </template>
           <el-menu-item-group>
             <template slot="title">幻灯片</template>
-            <el-menu-item index="/SlideList">幻灯片列表</el-menu-item>
-            <el-menu-item index="/SlideEdit">新建幻灯片</el-menu-item>
+            <el-menu-item index="/slide/list">幻灯片列表</el-menu-item>
+            <el-menu-item index="/slide/edit">新建幻灯片</el-menu-item>
           </el-menu-item-group>
         </el-submenu>   
       </el-menu>
