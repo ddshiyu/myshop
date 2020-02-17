@@ -1,0 +1,43 @@
+$colors: (
+  'primary': #e1372a,
+  'dark': #323232,
+  'gray': #696969,
+  'gray-1': #9e9e9e
+);
+$base-font-size: 1rem;
+$font-size: (
+  xs:0.2182rem,
+  s:0.2545rem,
+  md:0.2909rem,
+  lg:0.3636rem
+);
+$justify-content:(
+  start: flex-left,
+  end: flex-right,
+  center: center,
+  around: space-around,
+  between: space-between
+);
+$align-items:(
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch
+);
+$space-base-size:1rem;
+$space-type:(
+  p: padding,
+  m: margin
+);
+$space-direction: (
+  l: left,
+  r: right,
+  t: top,
+  b: bottom
+);
+$space-size:(
+  0:0,
+  1:0.1505,
+  2:0.1945,
+  3:0.4
+)

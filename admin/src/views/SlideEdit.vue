@@ -60,9 +60,9 @@ export default {
     },
     async createSlide () {
       if (!this.id){
-        const res = this.$http.post('slideedit', this.model)     
+        const res = this.$http.post('slide', this.model)     
       }else{
-        const res = this.$http.put(`slideedit/${this.id}`, this.model)
+        const res = this.$http.put(`slide/${this.id}`, this.model)
       }
        this.$router.push('/slide/list')
     }

@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get('itemlist')
+      const res = await this.$http.get('item')
       this.tableData = res.data
     },
     deleteSlide (data) {
@@ -50,7 +50,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.$http.delete(`slideedit/${data._id}`)
+        this.$http.delete(`item/${data._id}`)
         this.fetch()
         this.$message({
           type: 'success',

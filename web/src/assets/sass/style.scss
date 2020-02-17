@@ -1,0 +1,174 @@
+@import './variables.scss';
+
+html {
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+body,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+input,
+p,
+blockquote,
+th,
+td {
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #666666;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 0 10px;
+  text-align: left;
+}
+
+select {
+  font-size: 12px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+fieldset,
+img {
+  border: 0 none;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset p {
+  margin: 0;
+  padding: 0 0 0 8px;
+}
+
+legend {
+  display: none;
+}
+
+address,
+caption,
+em,
+strong,
+th,
+i {
+  font-style: normal;
+  font-weight: 400;
+}
+
+table caption {
+  margin-left: -1px;
+}
+
+hr {
+  border-bottom: 1px solid #FFFFFF;
+  border-top: 1px solid #E4E4E4;
+  border-width: 1px 0;
+  clear: both;
+  height: 2px;
+  margin: 5px 0;
+  overflow: hidden;
+}
+
+ol,
+ul {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: ””;
+}
+
+@each $colorKey,$color in $colors {
+  .text-#{$colorKey} {
+    color: $color
+  }
+  .bg-#{$colorKey} {
+    background: $color;
+  }
+}
+
+.d-flex{
+  display: flex;
+}
+.flex-1{
+  flex: 1
+}
+.flex-wrap{
+  flex-wrap: wrap
+}
+.flex-colum{
+  flex-direction: column;
+}
+
+@each $key,$value in $justify-content{
+  .jc-#{$key}{
+    justify-content: $value;
+  }
+}
+
+@each $key, $value in $align-items{
+  .ai-#{$key}{
+    align-items: $value
+  }
+}
+
+@each $typeKey, $typeValue in $space-type{
+  @each $sizeKey, $sizeValue in $space-size{
+    .#{$typeKey}-#{$sizeKey} {
+      #{$typeValue}: $sizeValue * $space-base-size
+    }
+  }
+  @each $sizeKey, $sizeValue in $space-size{
+    .#{$typeKey}x-#{$sizeKey}{
+      #{$typeValue}-left: $sizeValue * $space-base-size;
+      #{$typeValue}-right: $sizeValue * $space-base-size
+    }
+    .#{$typeKey}y-#{$sizeKey}{
+      #{$typeValue}-top: $sizeValue * $space-base-size;
+      #{$typeValue}-bottom: $sizeValue * $space-base-size
+    }
+  }
+  //mt-1
+  @each $dirKey,$dirValue in $space-direction{
+    @each $sizeKey, $sizeValue in $space-size{
+      .#{$typeKey}#{$dirKey}-#{$sizeKey}{
+        #{$typeValue}-#{$dirValue}:$sizeValue * $space-base-size
+      }
+    }
+  }
+}
