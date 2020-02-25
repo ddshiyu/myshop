@@ -5,6 +5,8 @@ import SlideList from '../views/SlideList.vue'
 import SlideEdit from '../views/SlideEdit.vue'
 import ItemList from '../views/ItemsList.vue'
 import ItemEdit from '../views/ItemsEdit.vue'
+import AccountList from '../views/AccountList.vue'
+import AccountEdit from '../views/AccountEdit.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -39,6 +41,20 @@ const routes = [
       {
         path: '/item/edit/:id',
         component: ItemEdit,
+        props: true
+      },
+      {
+        path: '/account/list',
+        name: 'AccountList',
+        component: AccountList
+      },
+      {
+        path: '/account/edit',
+        component: AccountEdit
+      },
+      {
+        path: '/account/edit/:id',
+        component: AccountEdit,
         props: true
       },
     ]

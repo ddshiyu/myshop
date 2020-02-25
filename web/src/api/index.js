@@ -1,0 +1,1 @@
+export const addCart = (data) => this.$http.post('addToCart',data)

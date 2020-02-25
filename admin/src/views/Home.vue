@@ -16,6 +16,11 @@
             <el-menu-item index="/item/list">商品列表</el-menu-item>
             <el-menu-item index="/item/edit">新建商品</el-menu-item>
           </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">账户</template>
+            <el-menu-item index="/account/list">账号列表</el-menu-item>
+            <el-menu-item index="/account/edit">新建账号</el-menu-item>
+          </el-menu-item-group>
         </el-submenu>       
       </el-menu>
     </el-aside>

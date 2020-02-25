@@ -17,10 +17,15 @@
         prop="url"
         label="图片"
         width='480'
-        > 
+        >
         <template slot-scope="scope">
         <img v-for='(pic,i) in scope.row.url' :key='i' :src="pic" alt="" width='60' height='60'>
       </template>
+      </el-table-column>
+      <el-table-column
+        prop="category"
+        label="分类"
+        width="280">
       </el-table-column>
       <el-table-column>
       <template slot-scope="scope">
