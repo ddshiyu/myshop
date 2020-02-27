@@ -7,6 +7,8 @@ import ItemList from '../views/ItemsList.vue'
 import ItemEdit from '../views/ItemsEdit.vue'
 import AccountList from '../views/AccountList.vue'
 import AccountEdit from '../views/AccountEdit.vue'
+import NewsList from '../views/NewsList.vue'
+import NewsEdit from '../views/NewsEdit.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -55,6 +57,20 @@ const routes = [
       {
         path: '/account/edit/:id',
         component: AccountEdit,
+        props: true
+      },
+      {
+        path: '/news/list',
+        name: 'NewsList',
+        component: NewsList
+      },
+      {
+        path: '/news/edit',
+        component: NewsEdit
+      },
+      {
+        path: '/news/edit/:id',
+        component: NewsEdit,
         props: true
       },
     ]

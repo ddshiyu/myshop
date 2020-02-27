@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition :name='transitionName'>
+      <router-view/>
+    </transition>
     <div class="bg-black text-gray bottomBar" v-if='$route.name !== "login"
-    && $route.name !== "detail"'>
+    && $route.name !== "detail" && $route.name !== "newsDetail"'>
       <ul class='d-flex jc-around py-2'>
         <router-link tag='li' to='/' active-class='navBar'>
         <i class="iconfont icon-iconset0111"></i>
@@ -24,7 +26,11 @@
 
 <script>
   export default {
-
+    data () {
+      return {
+        transitionName: 'slide'
+      }
+    },
   }
 </script>
 <style lang="scss">
@@ -49,5 +55,16 @@
       width:25%;
     }
   }
+}
+.slide-enter-active,
+.slide-leave-active{
+  transition: opacity 300ms ease;
+}
+.slide-enter {
+  opacity: 0;
+}
+.slide-leave-to {
+  display: none;
+  opacity: 0;
 }
 </style>

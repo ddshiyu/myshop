@@ -27,20 +27,36 @@ export default new Vuex.Store({
     fetchCart(state, {data}){
       state.cart = data
     },
-    increaceCartNum(state,id){
-      console.log(id)
+    increaceCartNum(state,{id}){
       for(let key of state.cart){
         if(key._id === id){
           key.num ++
         }
       }
     },
-    decreaceCartNum(state,id){
+    decreaceCartNum(state,{id}){
       for(let key of state.cart){
         if(key._id === id && key.num > 0){
           key.num --
         }
       }
+    },
+    caculateSum(state,form){
+      state.sum = 0
+      for(let key of form){
+        for(let s of state.cart){
+          if(key === s._id){
+            state.sum += parseInt(s.goods.price) * parseInt(s.num)
+          }
+        }
+      }
+    },
+    deleteCart(state, id){
+      state.cart.forEach( (item, i) => {
+        if(item._id === id) {
+          state.cart.splice(i, 1)
+        }
+      })
     }
   },
   actions: {
@@ -54,9 +70,14 @@ export default new Vuex.Store({
     asyncFetchCart({commit},data){
       commit('fetchCart',{data})
     },
-    asyncIncreaceCartNum({commit}, data){
-      
-    }
+    asyncIncreaceCartNum({commit}, {id,form}){
+      commit('increaceCartNum',{id})
+      commit('caculateSum',form)
+    },
+    asyncDecreaceCartNum({commit}, {id,form}){
+      commit('decreaceCartNum',{id})
+      commit('caculateSum',form)
+    },
   },
   modules: {
   }

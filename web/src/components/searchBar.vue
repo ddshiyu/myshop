@@ -1,16 +1,29 @@
 <template>
   <div class="bg-white w-100 py-2 radius px-1 d-flex">
-    <i class="icon"></i>
-    <input class="inputBar ml-1 fs-md text-gray" type="text" placeholder="试试输入你想要的宝贝名称把～" />
+    <i class="icon" @click='search'></i>
+    <input class="inputBar ml-1 fs-md text-gray" @keypress.enter="search" v-model='keywords' type="text" placeholder="试试输入你想要的宝贝名称把～" />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      keywords: ''
+    } 
+  },
+  methods: {
+    async search () {
+      const res = await this.$http.post('/search', {keywords: this.keywords})
+      this.$router.push({path:'/searchResult', query:{data: JSON.stringify(res.data)}})
+    }
+  }
+};
 </script>
 
 <style>
 .inputBar {
+  border:none;
   width: 90%;
 }
 .icon{

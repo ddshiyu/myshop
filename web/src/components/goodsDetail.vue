@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="topBar p-3 d-flex bg-white">
-      <i class='font back' @click='$router.back(-1)'></i>
+      <i class='font back' @click='$router.back(-1)'>&lt;</i>
       <div class="flex-1 t-center">
         <span class="mx-3">商品</span>
         <span class="mx-3">详情</span>
@@ -37,7 +37,7 @@
         <span>用户评价</span>|
         <span>玩家综合评分：5</span>
       </div>
-      <div class="p-2">
+      <div class="p-2" v-if='detailData.commonts && detailData.commonts.length > 0'>
         <div class='d-flex'>
           <div class="avatar mr-2">
             <img width='100%' src="https://game.gtimg.cn/images/zb/comm/jcp.png" alt="">
@@ -45,11 +45,12 @@
           <div>
             <p class='text-gray'>匿名</p>
             <p class='text-gray'>商品评分: 5</p>
-            <p>实物非常棒</p>
+            <p>{{detailData.commonts[0].commont}}</p>
           </div>
         </div>
         <div class='py-2'>
-          <div class="text-primary commentsBtn t-center radius">查看全部评论</div>
+          <div class="text-primary commentsBtn t-center radius"
+          @click='toCommont(detailData.commonts)'>查看全部评论</div>
         </div>
       </div>
     </div>
@@ -73,7 +74,7 @@
       @click='handleCart'>
         <span>加入购物车</span>
       </div>
-      <div class="py-3 rightOption bg-primary">
+      <div @click="$alert(`购买成功，您支付了${detailData.price}元`)" class="py-3 rightOption bg-primary">
         <p>立即购买</p>
       </div>
     </div>
@@ -106,8 +107,12 @@ export default {
     async handleCart () {
       this.addCart(this.detailData);
       await this.$http.post("addToCart",{user:localStorage.username,goods:this.detailData._id,num:1})
+      this.$alert('成功加入购物车')
     },
-    ...mapActions(['addCart'])
+    ...mapActions(['addCart']),
+    toCommont(data){
+      this.$router.push({path:"/commonts",query:{commonts:data}})
+    }
   }
 }
 </script>
@@ -128,14 +133,6 @@ export default {
   margin: 0 auto;
   padding:0.1rem 0;
   border:1px solid red;
-}
-.back{
-  display: block;
-  background:url('../assets/images/spr-mall_20171218.png') no-repeat;
-  background-position:68.434% 85.926%;
-	background-size: 221px 216px;
-  width:.3rem;
-  height: .3rem;
 }
 .cart{
   display: block;

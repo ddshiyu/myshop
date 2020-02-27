@@ -7,6 +7,11 @@ import goodsDetail from '../components/goodsDetail'
 import cart from '../views/cart'
 import mine from '../views/mine'
 import login from '../views/login'
+import user from '../views/user'
+import commonts from '../views/commonts'
+import newsDetail from '../views/newsDetail'
+import newsPage from '../views/newsPage'
+import searchResult from '../views/searchResult'
 
 Vue.use(VueRouter)
 
@@ -50,12 +55,44 @@ const routes = [
     path: '/login',
     name: 'login',
     component: login
-  }
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: user
+  },
+  {
+    path: '/commonts',
+    name: 'commonts',
+    component: commonts
+  },
+  {
+    path: '/newsDetail',
+    name: 'newsDetail',
+    component: newsDetail
+  },
+  {
+    path: '/newsPage',
+    name: 'newsPage',
+    component: newsPage
+  },
+  {
+    path: '/searchResult',
+    name: 'searchResult',
+    component: searchResult
+  },
 ]
 
 const router = new VueRouter({
   linkActiveClass:'active',
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 export default router

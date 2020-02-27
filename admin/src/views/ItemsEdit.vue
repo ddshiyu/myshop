@@ -50,6 +50,12 @@
         </el-dialog>
       </el-form-item>
       <el-form-item>
+        <el-button type='primary' @click='model.commonts.push({})'>添加评论</el-button>
+      </el-form-item>
+        <el-form-item label="商品评论" v-for="(item, i) in model.commonts" :key="i">
+          <el-input type='input' v-model='item.commont'></el-input>
+        </el-form-item>
+      <el-form-item>
         <el-button type='primary' @click='createSlide'>立刻创建</el-button>
       </el-form-item>
     </el-form>
@@ -62,7 +68,8 @@ export default {
     return {
       model: {
         url: [],
-        details: []
+        details: [],
+        commonts: []
       },
       editUrl:null,
       editDetails: null,
@@ -82,8 +89,7 @@ export default {
   },
   created () {
     if (this.id) {
-      this.editSlideFetch()
-      
+      this.editSlideFetch()   
     }
   },
   methods: {

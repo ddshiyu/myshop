@@ -5,7 +5,7 @@
     </div>
     <div class="wrapper bg-white t-center fs-s" ref='wrapper'>
       <ul ref='content' class="content d-flex">
-        <router-link tag='li' to='/category/1' active-class='active'>全部</router-link>
+        <router-link tag='li' to='/category/1' active-class='active' exact>全部</router-link>
         <router-link tag='li' to='/category/2'>手办模玩</router-link>
         <router-link tag='li' to='/category/3'>数码3C</router-link>
         <router-link tag='li' to='/category/4'>服饰</router-link>

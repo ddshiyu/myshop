@@ -6,9 +6,10 @@
       </transition>
       <div class="logo"></div>
       <p><input type="text" v-model='form.username'></p> 
-      <p><input type="text" v-model='form.password'></p>
+      <p><input type="password" v-model='form.password'></p>
       <p><button @click="loginAccount">登陆</button></p>
-      <p><button>一键登陆</button></p>
+      <!-- <p><button>一键登陆</button></p> -->
+      <p class='mt-3'>未注册的账号第一次登录会自动注册</p>
       <div class='text-primary fs-md my-3' v-if='info.msg === 1'>账号或密码错误</div>
     </div>
   </div>
@@ -19,7 +20,10 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      form: {},
+      form: {
+        username: '',
+        password: ''
+      },
       info: ''
     }
   },
@@ -32,13 +36,17 @@ export default {
   },
   methods: {
     async loginAccount () {
-      const res = await this.$http.post('account', this.form)
-      this.info = res.data;
-      if(res.data.msg === 0){
-        this.$router.push('/')
-        localStorage.setItem('token', res.data.token)
-        localStorage.setItem('username', res.data.username)
-        this.addUsername(res.data.username)
+      if(this.form.username === '' || this.form.password === ''){
+        this.$alert('请先输入账号和密码哦～')
+      }else{
+        const res = await this.$http.post('account', this.form)
+        this.info = res.data;
+        if(res.data.msg === 0){
+          this.$router.push('/')
+          localStorage.setItem('token', res.data.token)
+          localStorage.setItem('username', res.data.username)
+          this.addUsername(res.data.username)
+        }
       }
     },
     ...mapActions(['addUsername'])
